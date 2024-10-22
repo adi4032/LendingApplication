@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Your Loan Applications</h2>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="applications.length === 0 && !errorMessage" class="alert alert-info">
+      No applications found.
+    </div>
+  
+    <div *ngIf="applications.length > 0" class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Application ID</th>
+            <th>Loan Scheme ID</th>
+            <th>Loan Amount</th>
+            <th>Account Number</th>
+            <th>Status</th>
+            <th>Application Date</th>
+            <th>Remark</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of applications">
+            <td>{{ app.loanApplicationId }}</td>
+            <td>{{ app.loanSchemesId }}</td>
+            <td>{{ app.amount | currency }}</td>
+            <td>{{ app.accountNumber }}</td>
+            <td>
+              <span [ngClass]="{
+                'badge bg-success': app.status === 'approved',
+                'badge bg-danger': app.status === 'rejected',
+                'badge bg-warning': app.status === 'pending'
+              }">{{ app.status }}</span>
+            </td>
+            <td>{{ app.applicationDate | date:'short' }}</td>
+            <td>{{ app.remark || 'N/A' }}</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                [disabled]="app.status !== 'approved'"
+                (click)="onMakePayment(app.loanApplicationId)">
+                Make Payment
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- {{schemeName | json}} -->
+  

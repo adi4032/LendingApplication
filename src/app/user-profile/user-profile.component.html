@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">User Profile Details</h2>
+  <form *ngIf="user" class="p-4 border rounded shadow-sm bg-light">
+    
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person"></i></span>
+        <input type="text" class="form-control" id="name" [(ngModel)]="user.fullName" name="name">
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+        <input type="number" class="form-control" id="age" [(ngModel)]="user.age" name="age">
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+        <input type="email" class="form-control" id="email" [(ngModel)]="user.userEmail" name="email">
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person-check"></i></span>
+        <input type="text" class="form-control" id="username" [(ngModel)]="user.userName" name="username">
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+      </div>
+    </div>
+    
+    <button type="button" class="btn btn-dark" (click)="updateUserDetails()" routerLink="/user">
+      <i class="fas fa-save"></i> Save Changes
+    </button>
+  </form>
+</div>

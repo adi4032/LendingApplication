@@ -1,0 +1,77 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Back Button on the Left -->
+    <button class="btn btn-light" (click)="goBack()"><i class="bi bi-skip-backward-btn-fill"></i>Back</button>
+    <!-- Navbar Brand on the Left -->
+    <a class="navbar-brand ms-3" href="#">Go Back to Admin Panel</a>
+    <!-- Navbar Toggler Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Empty for now -->
+    </div>
+  </div>
+</nav>
+
+<div class="container my-5">
+  <h4 class="mt-5">Loan Officers</h4>
+ 
+  <!-- Search bar -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by name, email, or username"
+      [(ngModel)]="searchTerm"
+      (input)="filterOfficers()"
+    />
+  </div>
+ 
+  <div class="table-responsive">
+    <table
+      class="table table-hover table-bordered text-center align-middle"
+      style="font-size: 16px; border-radius: 10px; overflow: hidden; width: 100%;"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Username</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let officer of getPaginatedOfficers(); let i = index">
+          <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+          <td>{{ officer.loName }}</td>
+          <td>{{ officer.loEmail }}</td>
+          <td>{{ officer.loUserName }}</td>
+          <td>
+            <div class="d-flex justify-content-center align-items-center">
+              <button class="btn btn-danger btn-sm me-2" (click)="deleteLoanOfficer(officer.loanOfficerId)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+ 
+<!-- Pagination buttons as they are -->
+<ul class="pagination justify-content-center">
+  <li class="page-item" [class.disabled]="currentPage === 1">
+    <a class="page-link" (click)="prevPage()">Previous</a>
+  </li>
+  <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index">
+    <a class="page-link" [class.active]="currentPage === i + 1" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+  </li>
+  <li class="page-item" [class.disabled]="currentPage === totalPages">
+    <a class="page-link" (click)="nextPage()">Next</a>
+  </li>
+</ul>
+
+<!-- {{loanOfficers | json}} -->

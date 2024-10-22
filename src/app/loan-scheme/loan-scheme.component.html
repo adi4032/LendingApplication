@@ -1,0 +1,59 @@
+<div class="container">
+  <!-- Retail Loan Schemes -->
+  <h2 class="my-4 text-center">Retail Loan Schemes</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Loan Name</th>
+          <th>Description</th>
+          <th>Rate of Interest (%)</th>
+          <th>Tenure (Months)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of retailLoans">
+          <td>{{ loan.lsName }}</td>
+          <td>{{ loan.lsDescription }}</td>
+          <td>{{ loan.rateOfInterest }}%</td>
+          <td>{{ loan.tenure }} months</td>
+          <td>
+            <button class="btn btn-success btn-sm" (click)="applyForLoan(loan.loanSchemesId)">
+              Apply <i class="fas fa-arrow-right"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Corporate Loan Schemes -->
+  <h2 class="my-4 text-center">Corporate Loan Schemes</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Loan Name</th>
+          <th>Description</th>
+          <th>Rate of Interest (%)</th>
+          <th>Tenure (Months)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of corporateLoans">
+          <td>{{ loan.lsName }}</td>
+          <td>{{ loan.lsDescription }}</td>
+          <td>{{ loan.rateOfInterest }}%</td>
+          <td>{{ loan.tenure }} months</td>
+          <td>
+            <button class="btn btn-success btn-sm" (click)="applyForLoan(loan.loanSchemesId)">
+              Apply <i class="fas fa-arrow-right"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

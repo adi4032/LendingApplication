@@ -1,0 +1,48 @@
+<!-- Navbar (replacing mat-toolbar with Bootstrap navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <a class="navbar-brand" href="#">Loan Officer Dashboard</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <!-- <button class="btn btn-outline-light me-2" routerLink="/loan-officer-profile">Profile</button> -->
+    <button class="btn btn-outline-light" routerLink="/loan-officer-main-dashboard">Go Back</button>
+  </div>
+</nav>
+ 
+ 
+  <!-- Dashboard content -->
+  <div class="container my-5">
+    <h1 class="mb-4">Loan Applications</h1>
+    <!-- Table for Loan Applications (Bootstrap table styling) -->
+    <table class="table table-striped table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Application ID</th>
+          <th scope="col">User ID</th>
+          <th scope="col">Amount Requested</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+          <th scope="col">View Documents</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through loanApplications and display each row -->
+        <tr *ngFor="let application of loanApplications">
+          <td>{{ application.loanApplicationId }}</td>
+          <td>{{ application.userId }}</td>
+          <td>{{ application.amount | currency }}</td>
+          <td>{{ application.status }}</td>
+          <td>
+            <!-- Action buttons for Approve and Reject -->
+            <button class="btn btn-primary btn-sm me-2" (click)="approveApplication(application.loanApplicationId)">Approve</button>
+            <button class="btn btn-danger btn-sm" (click)="rejectApplication(application.loanApplicationId)">Reject</button>
+          </td>
+          <td>
+            <!-- View Documents button -->
+            <button class="btn btn-secondary btn-sm" (click)="viewDocuments(application)">View Documents</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,36 @@
+.chart-container {
+    width: 500px;
+
+}
+  
+.chart-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows wrapping for the third chart */
+}
+  
+.chart-item {
+    flex: 0 1 45%; /* Reduce the width to 45% for each chart in the row */
+    margin: 15px; /* Increased space around the charts */
+}
+  
+.chart-item canvas {
+    max-width: 100%; /* Make sure the chart is responsive */
+    height: 300px; /* Reduce the height of the charts */
+}
+  
+/* Ensure the third chart takes up full width */
+.chart-item:nth-child(3) {
+    flex-basis: 100%;
+    margin-top: 20px;
+    height: 300px; /* You can adjust the height of the third chart */
+    margin-bottom: 15px; /* Additional bottom margin */
+}
+
+.card {
+    max-width: 100%; /* Prevents cards from overflowing */
+}
+
+.card canvas {
+    height: 200px; /* Adjust canvas height if needed */
+}

@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- Back Button on the Left -->
+      <button class="btn btn-light" (click)="goBack()"><i class="bi bi-skip-backward-btn-fill"></i>Back</button>
+      <!-- Navbar Brand on the Left -->
+      <a class="navbar-brand ms-3" href="#">Go Back to Admin Panel</a>
+      <!-- Navbar Toggler Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar Content -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Empty for now -->
+      </div>
+    </div>
+  </nav>
+  <h1></h1>
+<div class="row g-4">
+  <!-- Card 1: Loan Applications Breakdown -->
+  <div class="col-md-4"> <!-- Each card now takes up 4 columns -->
+    <div class="card text-start shadow-lg bg-white p-3 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Loan Applications Breakdown</h5>
+      <canvas id="loanApplicationsChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Card 2: Status of Loan Applications -->
+  <div class="col-md-4">
+    <div class="card text-start shadow-lg bg-white p-2 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Status of Loan Applications</h5>
+      <canvas id="loanStatusChart"></canvas>
+    </div>
+  </div>
+
+  <!-- // Card 3: Loan Officers Breakdown -->
+  <div class="col-md-4"> <!-- Changed from col-md-12 to col-md-4 -->
+    <div class="card text-start shadow-lg bg-white p-3 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Loan Officers Breakdown</h5>
+      <canvas id="loanOfficersChart"></canvas>
+    </div>
+  </div>

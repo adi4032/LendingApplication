@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <!-- Navbar for Personal Documents -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary mb-4">
+      <span class="navbar-brand text-white">Personal Documents</span>
+    </nav>
+  
+    <!-- Check if there are personal documents -->
+    <div *ngIf="personalDocuments.length > 0; else noDocuments">
+      <h2 class="mb-3">Documents for Application ID: <span class="text-primary">{{ applicationId }}</span></h2>
+  
+      <!-- List group for documents -->
+      <ul class="list-group">
+        <li *ngFor="let document of personalDocuments" class="list-group-item d-flex justify-content-between align-items-center">
+          <p class="mb-1"><strong>{{ document.docsName }}</strong></p>
+          <a [href]="document.docsURL" target="_blank" class="btn btn-outline-primary btn-sm">View Document</a>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Template for no documents -->
+    <ng-template #noDocuments>
+      <div class="alert alert-warning mt-3" role="alert">
+        <strong>No personal documents uploaded for this application.</strong>
+      </div>
+    </ng-template>
+  </div>
+  

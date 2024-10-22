@@ -1,0 +1,47 @@
+<div class="container mt-4 p-4 bg-light rounded shadow-sm">
+    <h2 class="text-center mb-4">Repayment Details</h2>
+  
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Repayment list -->
+    <div *ngIf="repayments.length > 0">
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Repayment ID</th>
+            <th>Principal Amount</th>
+            <th>Amount To Be Paid</th>
+            <th>Due Date</th>
+            <th>No. of Installments</th>
+            <th>Last Paid Date</th>
+            <th>Is NPA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let repayment of repayments">
+            <td>{{ repayment.repaymentsId }}</td>
+            <td>{{ repayment.principalAmount | currency }}</td>
+            <td>{{ repayment.amountToBePaid | currency }}</td>
+            <td>{{ repayment.dueDate | date:'shortDate' }}</td>
+            <td>{{ repayment.noOfInstallments }}</td>
+            <td>{{ repayment.lastPaid | date:'shortDate' }}</td>
+            <td>{{ repayment.isNPA ? 'Yes' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- No repayments found message -->
+    <div *ngIf="repayments.length === 0" class="alert alert-warning">
+      No repayments found for this application.
+    </div>
+  
+    <!-- Button to go to the dashboard -->
+    <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-secondary" routerLink="/user">Go to Dashboard</button>
+    </div>
+  </div>
+  
